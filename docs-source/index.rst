@@ -11,6 +11,7 @@ Welcome to wooper's documentation!
 
    expect.rst
    test_class.rst
+   unittest_example.rst
 
 Indices and tables
 ==================
