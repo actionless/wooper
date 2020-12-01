@@ -18,7 +18,7 @@ with open(path.join(HERE, 'requirements.txt'), encoding='utf-8') as f:
 
 setup(
     name='wooper',
-    version="0.4.3",
+    version="0.4.4",
     description="FrisbyJS-inspired REST API testing helpers and steps \
 for 'behave' behavior-driven development testing library",
     long_description=LONG_DESCRIPTION,
