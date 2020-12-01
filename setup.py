@@ -7,11 +7,9 @@ from setuptools import find_packages, setup
 
 HERE = path.abspath(path.dirname(__file__))
 
-# Get the long description from the README file
 with _open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
     LONG_DESCRIPTION = f.read()
 
-# Get the long description from the README file
 with _open(path.join(HERE, 'requirements.txt'), encoding='utf-8') as f:
     REQUREMENTS = f.read().splitlines()
 
@@ -40,11 +38,8 @@ setup(
         'Programming Language :: Python',
         'Topic :: Software Development',
 
-        # Pick your license as you wish
-        'License :: OSI Approved :: GPL3 License',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
 
-        # Specify the Python versions you support here. In particular, ensure
-        # that you indicate whether you support Python 2, Python 3 or both.
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
