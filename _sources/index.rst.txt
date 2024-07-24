@@ -9,6 +9,7 @@ Table of Contents
 
    expect.rst
    rest.rst
+   behave_steps_expect.rst
 
 .. toctree::
    :caption: Using with UnitTest
