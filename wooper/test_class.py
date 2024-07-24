@@ -97,7 +97,8 @@ class ApiMixin:
 
         :param str uri: URI
 
-        rest of args is the same as in requests.get()
+        rest of args is the same as in `requests.get()
+        <https://requests.readthedocs.io/en/latest/api/#requests.get>`_
         """
         self.request('GET', *args, **kwargs)
 
@@ -109,7 +110,8 @@ class ApiMixin:
         :param data: request payload
         :type data: str, list, dict
 
-        rest of args is the same as in requests.post()
+        rest of args is the same as in `requests.post()
+        <https://requests.readthedocs.io/en/latest/api/#requests.post>`_
         """
         self.request_with_data('POST', *args, **kwargs)
 
@@ -121,7 +123,8 @@ class ApiMixin:
         :param data: request payload
         :type data: str, list, dict
 
-        rest of args is the same as in requests.patch()
+        rest of args is the same as in `requests.patch()
+        <https://requests.readthedocs.io/en/latest/api/#requests.patch>`_
         """
         self.request_with_data('PATCH', *args, **kwargs)
 
@@ -133,7 +136,8 @@ class ApiMixin:
         :param data: request payload
         :type data: str, list, dict
 
-        rest of args is the same as in requests.put()
+        rest of args is the same as in `requests.put()
+        <https://requests.readthedocs.io/en/latest/api/#requests.put>`_
         """
         self.request_with_data('PUT', *args, **kwargs)
 
@@ -143,7 +147,8 @@ class ApiMixin:
 
         :param str uri: URI
 
-        rest of args is the same as in requests.delete()
+        rest of args is the same as in `requests.delete()
+        <https://requests.readthedocs.io/en/latest/api/#requests.delete>`_
         """
         self.request('DELETE', *args, **kwargs)
 
