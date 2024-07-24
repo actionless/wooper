@@ -24,7 +24,7 @@ from .general import apply_path, WooperAssertionError
 class ApiMixin:
     """
     This class can be used as a mixin to `unittest.TestCase
-    <https://docs.python.org/3.4/library/unittest.html#unittest.TestCase>`_
+    <https://docs.python.org/3/library/unittest.html#unittest.TestCase>`_
     to provide additional methods for requesting, inspecting and testing
     REST API services.
     """
