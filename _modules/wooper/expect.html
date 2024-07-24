@@ -1,19 +1,16 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>wooper.expect &#8212; wooper 0.4.4 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=89b800e6" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b209ebb4"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -63,7 +60,7 @@
 
 
 <div class="viewcode-block" id="expect_status"><a class="viewcode-back" href="../../expect.html#wooper.expect.expect_status">[docs]</a><span class="k">def</span> <span class="nf">expect_status</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    checks if response status equals given code</span>
 
 <span class="sd">    :param int code: Expected status code</span>
@@ -77,7 +74,7 @@
 
 
 <div class="viewcode-block" id="expect_status_in"><a class="viewcode-back" href="../../expect.html#wooper.expect.expect_status_in">[docs]</a><span class="k">def</span> <span class="nf">expect_status_in</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">codes</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    checks if response status equals to one of the provided</span>
 
 <span class="sd">    :param list codes: List of valid status codes</span>
@@ -91,7 +88,7 @@
 
 
 <div class="viewcode-block" id="expect_json"><a class="viewcode-back" href="../../expect.html#wooper.expect.expect_json">[docs]</a><span class="k">def</span> <span class="nf">expect_json</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">expected_json</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    checks if json response equals some json,</span>
 
 <span class="sd">    :param expected_json: JSON object to compare with</span>
@@ -108,7 +105,7 @@
 
 
 <div class="viewcode-block" id="expect_json_match"><a class="viewcode-back" href="../../expect.html#wooper.expect.expect_json_match">[docs]</a><span class="k">def</span> <span class="nf">expect_json_match</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">expected_json</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    checks if json response partly matches some json,</span>
 
 <span class="sd">    :param expected_json: JSON object to compare with</span>
@@ -149,7 +146,7 @@
 
 <div class="viewcode-block" id="expect_json_contains"><a class="viewcode-back" href="../../expect.html#wooper.expect.expect_json_contains">[docs]</a><span class="k">def</span> <span class="nf">expect_json_contains</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">expected_json</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                          <span class="n">reverse_expectation</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    checks if json response contains some json subset,</span>
 
 <span class="sd">    :param expected_json: JSON object to compare with</span>
@@ -198,7 +195,7 @@
 
 
 <div class="viewcode-block" id="expect_json_not_contains"><a class="viewcode-back" href="../../expect.html#wooper.expect.expect_json_not_contains">[docs]</a><span class="k">def</span> <span class="nf">expect_json_not_contains</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">expected_json</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    checks if json response not contains some json subset,</span>
 
 <span class="sd">    :param expected_json: JSON object to compare with</span>
@@ -214,7 +211,7 @@
 
 
 <div class="viewcode-block" id="expect_headers_contain"><a class="viewcode-back" href="../../expect.html#wooper.expect.expect_headers_contain">[docs]</a><span class="k">def</span> <span class="nf">expect_headers_contain</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">header</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    checks if response headers contain a given header</span>
 
 <span class="sd">    :param str header: Expected header name.</span>
@@ -233,7 +230,7 @@
 
 
 <div class="viewcode-block" id="expect_headers"><a class="viewcode-back" href="../../expect.html#wooper.expect.expect_headers">[docs]</a><span class="k">def</span> <span class="nf">expect_headers</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">partly</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    checks if response headers values are equal to given</span>
 
 <span class="sd">    :param dict headers: Dict with headers and their values,</span>
@@ -257,7 +254,7 @@
 
 
 <div class="viewcode-block" id="expect_json_length"><a class="viewcode-back" href="../../expect.html#wooper.expect.expect_json_length">[docs]</a><span class="k">def</span> <span class="nf">expect_json_length</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    checks if count of objects in json response equals provided length,</span>
 
 <span class="sd">    :param int length: Expected number of objects inside json</span>
@@ -276,7 +273,7 @@
 
 
 <div class="viewcode-block" id="expect_body_contains"><a class="viewcode-back" href="../../expect.html#wooper.expect.expect_body_contains">[docs]</a><span class="k">def</span> <span class="nf">expect_body_contains</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    checks if response body contains some text</span>
 
 <span class="sd">    :param str text: Expected text</span>
@@ -293,23 +290,25 @@
             <p class="logo"><a href="../../index.html">
               <img class="logo" src="../../_static/wooper.png" alt="Logo"/>
             </a></p>
-  <h3><a href="../../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../expect.html">Expectations for Behave</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../test_class.html">Test class for UnitTest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../unittest_example.html">Example using with Unittest</a></li>
 </ul>
 
+  </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -329,8 +328,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2015-2020, actionless.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+    &#169; Copyright 2015-2020, actionless.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </body>
 </html>
