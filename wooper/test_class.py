@@ -152,6 +152,17 @@ class ApiMixin:
         """
         self.request('DELETE', *args, **kwargs)
 
+    def HEAD(self, *args, **kwargs):
+        """
+        make a HEAD request to some URI
+
+        :param str uri: URI
+
+        rest of args is the same as in `requests.head()
+        <https://requests.readthedocs.io/en/latest/api/#requests.head>`_
+        """
+        self.request('HEAD', *args, **kwargs)
+
     @property
     def json_response(self):
         """
