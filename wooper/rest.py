@@ -1,3 +1,61 @@
+"""
+.. module:: rest
+   :synopsis: REST functions
+
+REST functions are receiving behave `context` object
+as first argument.
+These helpers make testing API response bodies and headers easy with minimal
+time and effort.
+
+Context Variables
+-----------------
+
+The following context variables are used:
+
+.. rubric:: To be set by user:
+
+.. attribute:: context.server_url
+
+    :type: str
+
+    server base url
+
+.. attribute:: context.enable_ssl_verification
+
+    :type: bool = False
+
+.. attribute:: context.print_url
+
+    :type: bool
+
+.. attribute:: context.print_payload
+
+    :type: bool
+
+.. attribute:: context.print_headers
+
+    :type: bool
+
+
+.. rubric:: Will be set by lib:
+
+.. attribute:: context.response
+
+    request `response
+    <https://requests.readthedocs.io/en/latest/api/#requests.Response>`_
+
+.. attribute:: context.session
+
+    request `session
+    <https://requests.readthedocs.io/en/latest/api/#requests.Session>`_
+
+.. moduleauthor:: Yauhen Kirylau <actionless.loveless@gmail.com>
+
+Functions
+---------
+"""
+
+
 from pprint import pprint
 import json
 import os
@@ -52,26 +110,80 @@ def request(context, method, uri, data=None, *args,
 
 
 def GET(context, uri, *args, **kwargs):
+    """
+    make a GET request to some URI
+
+    :param str uri: URI
+
+    rest of args is the same as in `requests.get()
+    <https://requests.readthedocs.io/en/latest/api/#requests.get>`_
+    """
     request(context, 'GET', uri, *args, **kwargs)
 
 
 def POST(context, uri, *args, **kwargs):
+    """
+    make a POST request to some URI
+
+    :param str uri: URI
+    :param data: request payload
+    :type data: str, list, dict
+
+    rest of args is the same as in `requests.post()
+    <https://requests.readthedocs.io/en/latest/api/#requests.post>`_
+    """
     request(context, 'POST', uri, *args, **kwargs)
 
 
 def PATCH(context, uri, *args, **kwargs):
+    """
+    make a PATCH request to some URI
+
+    :param str uri: URI
+    :param data: request payload
+    :type data: str, list, dict
+
+    rest of args is the same as in `requests.patch()
+    <https://requests.readthedocs.io/en/latest/api/#requests.patch>`_
+    """
     request(context, 'PATCH', uri, *args, **kwargs)
 
 
 def PUT(context, uri, *args, **kwargs):
+    """
+    make a PUT request to some URI
+
+    :param str uri: URI
+    :param data: request payload
+    :type data: str, list, dict
+
+    rest of args is the same as in `requests.put()
+    <https://requests.readthedocs.io/en/latest/api/#requests.put>`_
+    """
     request(context, 'PUT', uri, *args, **kwargs)
 
 
 def DELETE(context, uri, *args, **kwargs):
+    """
+    make a DELETE request to some URI
+
+    :param str uri: URI
+
+    rest of args is the same as in `requests.delete()
+    <https://requests.readthedocs.io/en/latest/api/#requests.delete>`_
+    """
     request(context, 'DELETE', uri, *args, **kwargs)
 
 
 def HEAD(context, uri, *args, **kwargs):
+    """
+    make a HEAD request to some URI
+
+    :param str uri: URI
+
+    rest of args is the same as in `requests.head()
+    <https://requests.readthedocs.io/en/latest/api/#requests.head>`_
+    """
     request(context, 'HEAD', uri, *args, **kwargs)
 
 
