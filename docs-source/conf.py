@@ -34,6 +34,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinxcontrib.fulltoc',
+    'sphinx_mdinclude',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
