@@ -2,8 +2,9 @@
 .. module:: rest
    :synopsis: REST functions
 
-REST functions are receiving behave `context` object
-as first argument.
+REST functions are receiving behave `context
+<https://behave.readthedocs.io/en/stable/context_attributes.html>`_
+object as first argument.
 These helpers make testing API response bodies and headers easy with minimal
 time and effort.
 
