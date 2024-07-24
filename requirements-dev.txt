@@ -1,5 +1,5 @@
 -r requirements.txt
-coverage
-Sphinx
-sphinxcontrib-fulltoc
-sphinx-mdinclude
+coverage~=7.6.0
+Sphinx~=7.4.7
+sphinx_mdinclude~=0.6.1
+sphinxcontrib-fulltoc~=1.2.0
