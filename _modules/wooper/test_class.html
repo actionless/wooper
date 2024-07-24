@@ -135,7 +135,8 @@
 
 <span class="sd">        :param str uri: URI</span>
 
-<span class="sd">        rest of args is the same as in requests.get()</span>
+<span class="sd">        rest of args is the same as in `requests.get()</span>
+<span class="sd">        &lt;https://requests.readthedocs.io/en/latest/api/#requests.get&gt;`_</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
@@ -147,7 +148,8 @@
 <span class="sd">        :param data: request payload</span>
 <span class="sd">        :type data: str, list, dict</span>
 
-<span class="sd">        rest of args is the same as in requests.post()</span>
+<span class="sd">        rest of args is the same as in `requests.post()</span>
+<span class="sd">        &lt;https://requests.readthedocs.io/en/latest/api/#requests.post&gt;`_</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">request_with_data</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
@@ -159,7 +161,8 @@
 <span class="sd">        :param data: request payload</span>
 <span class="sd">        :type data: str, list, dict</span>
 
-<span class="sd">        rest of args is the same as in requests.patch()</span>
+<span class="sd">        rest of args is the same as in `requests.patch()</span>
+<span class="sd">        &lt;https://requests.readthedocs.io/en/latest/api/#requests.patch&gt;`_</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">request_with_data</span><span class="p">(</span><span class="s1">&#39;PATCH&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
@@ -171,7 +174,8 @@
 <span class="sd">        :param data: request payload</span>
 <span class="sd">        :type data: str, list, dict</span>
 
-<span class="sd">        rest of args is the same as in requests.put()</span>
+<span class="sd">        rest of args is the same as in `requests.put()</span>
+<span class="sd">        &lt;https://requests.readthedocs.io/en/latest/api/#requests.put&gt;`_</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">request_with_data</span><span class="p">(</span><span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
@@ -181,9 +185,21 @@
 
 <span class="sd">        :param str uri: URI</span>
 
-<span class="sd">        rest of args is the same as in requests.delete()</span>
+<span class="sd">        rest of args is the same as in `requests.delete()</span>
+<span class="sd">        &lt;https://requests.readthedocs.io/en/latest/api/#requests.delete&gt;`_</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s1">&#39;DELETE&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ApiMixin.HEAD"><a class="viewcode-back" href="../../test_class.html#wooper.test_class.ApiMixin.HEAD">[docs]</a>    <span class="k">def</span> <span class="nf">HEAD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        make a HEAD request to some URI</span>
+
+<span class="sd">        :param str uri: URI</span>
+
+<span class="sd">        rest of args is the same as in `requests.head()</span>
+<span class="sd">        &lt;https://requests.readthedocs.io/en/latest/api/#requests.head&gt;`_</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s1">&#39;HEAD&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">json_response</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
