@@ -71,6 +71,10 @@ def DELETE(context, uri, *args, **kwargs):
     request(context, 'DELETE', uri, *args, **kwargs)
 
 
+def HEAD(context, uri, *args, **kwargs):
+    request(context, 'HEAD', uri, *args, **kwargs)
+
+
 def json_response(context):
     json_dict = parse_json_response(context.response)
     return json_dict
