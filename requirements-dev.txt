@@ -1,6 +1,5 @@
 -r requirements.txt
 coverage
-nose
 Sphinx
 sphinxcontrib-fulltoc
 sphinx-mdinclude

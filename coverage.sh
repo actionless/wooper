@@ -1,3 +1,3 @@
 #!/bin/sh
-nosetests --cover-package=wooper --with-coverage &&
+coverage run --source=wooper -m unittest -v &&
 python -m coverage html
