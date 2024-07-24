@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wooper.rest &#8212; wooper 0.4.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=89b800e6" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b209ebb4"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">wooper 0.4.4 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">wooper.rest</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for wooper.rest</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: rest</span>
+<span class="sd">   :synopsis: REST functions</span>
+
+<span class="sd">REST functions are receiving behave `context` object</span>
+<span class="sd">as first argument.</span>
+<span class="sd">These helpers make testing API response bodies and headers easy with minimal</span>
+<span class="sd">time and effort.</span>
+
+<span class="sd">Context Variables</span>
+<span class="sd">-----------------</span>
+
+<span class="sd">The following context variables are used:</span>
+
+<span class="sd">.. rubric:: To be set by user:</span>
+
+<span class="sd">.. attribute:: context.server_url</span>
+
+<span class="sd">    :type: str</span>
+
+<span class="sd">    server base url</span>
+
+<span class="sd">.. attribute:: context.enable_ssl_verification</span>
+
+<span class="sd">    :type: bool = False</span>
+
+<span class="sd">.. attribute:: context.print_url</span>
+
+<span class="sd">    :type: bool</span>
+
+<span class="sd">.. attribute:: context.print_payload</span>
+
+<span class="sd">    :type: bool</span>
+
+<span class="sd">.. attribute:: context.print_headers</span>
+
+<span class="sd">    :type: bool</span>
+
+
+<span class="sd">.. rubric:: Will be set by lib:</span>
+
+<span class="sd">.. attribute:: context.response</span>
+
+<span class="sd">    request `response</span>
+<span class="sd">    &lt;https://requests.readthedocs.io/en/latest/api/#requests.Response&gt;`_</span>
+
+<span class="sd">.. attribute:: context.session</span>
+
+<span class="sd">    request `session</span>
+<span class="sd">    &lt;https://requests.readthedocs.io/en/latest/api/#requests.Session&gt;`_</span>
+
+<span class="sd">.. moduleauthor:: Yauhen Kirylau &lt;actionless.loveless@gmail.com&gt;</span>
+
+<span class="sd">Functions</span>
+<span class="sd">---------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">Session</span>
+
+<span class="kn">from</span> <span class="nn">.general</span> <span class="kn">import</span> <span class="n">parse_json_response</span><span class="p">,</span> <span class="n">apply_path</span>
+
+
+<span class="k">def</span> <span class="nf">get_url</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">uri</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">context</span><span class="o">.</span><span class="n">server_url</span> <span class="o">+</span> <span class="n">uri</span>
+
+
+<span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+            <span class="n">add_server</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">context</span><span class="o">.</span><span class="n">session</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">add_server</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">get_url</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">uri</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">uri</span>
+
+    <span class="k">if</span> <span class="s1">&#39;headers&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;headers&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">print_url</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{method}</span><span class="s1"> </span><span class="si">{url}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">print_payload</span> <span class="ow">and</span> <span class="s1">&#39;data&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">print_headers</span><span class="p">:</span>
+        <span class="n">pprint</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+
+    <span class="n">context</span><span class="o">.</span><span class="n">response</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+        <span class="n">method</span><span class="p">,</span>
+        <span class="n">url</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+        <span class="n">verify</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">template_variables</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s1">&#39;enable_ssl_verification&#39;</span><span class="p">,</span> <span class="kc">False</span>
+        <span class="p">),</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="GET"><a class="viewcode-back" href="../../rest.html#wooper.rest.GET">[docs]</a><span class="k">def</span> <span class="nf">GET</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    make a GET request to some URI</span>
+
+<span class="sd">    :param str uri: URI</span>
+
+<span class="sd">    rest of args is the same as in `requests.get()</span>
+<span class="sd">    &lt;https://requests.readthedocs.io/en/latest/api/#requests.get&gt;`_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="POST"><a class="viewcode-back" href="../../rest.html#wooper.rest.POST">[docs]</a><span class="k">def</span> <span class="nf">POST</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    make a POST request to some URI</span>
+
+<span class="sd">    :param str uri: URI</span>
+<span class="sd">    :param data: request payload</span>
+<span class="sd">    :type data: str, list, dict</span>
+
+<span class="sd">    rest of args is the same as in `requests.post()</span>
+<span class="sd">    &lt;https://requests.readthedocs.io/en/latest/api/#requests.post&gt;`_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PATCH"><a class="viewcode-back" href="../../rest.html#wooper.rest.PATCH">[docs]</a><span class="k">def</span> <span class="nf">PATCH</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    make a PATCH request to some URI</span>
+
+<span class="sd">    :param str uri: URI</span>
+<span class="sd">    :param data: request payload</span>
+<span class="sd">    :type data: str, list, dict</span>
+
+<span class="sd">    rest of args is the same as in `requests.patch()</span>
+<span class="sd">    &lt;https://requests.readthedocs.io/en/latest/api/#requests.patch&gt;`_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;PATCH&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PUT"><a class="viewcode-back" href="../../rest.html#wooper.rest.PUT">[docs]</a><span class="k">def</span> <span class="nf">PUT</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    make a PUT request to some URI</span>
+
+<span class="sd">    :param str uri: URI</span>
+<span class="sd">    :param data: request payload</span>
+<span class="sd">    :type data: str, list, dict</span>
+
+<span class="sd">    rest of args is the same as in `requests.put()</span>
+<span class="sd">    &lt;https://requests.readthedocs.io/en/latest/api/#requests.put&gt;`_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DELETE"><a class="viewcode-back" href="../../rest.html#wooper.rest.DELETE">[docs]</a><span class="k">def</span> <span class="nf">DELETE</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    make a DELETE request to some URI</span>
+
+<span class="sd">    :param str uri: URI</span>
+
+<span class="sd">    rest of args is the same as in `requests.delete()</span>
+<span class="sd">    &lt;https://requests.readthedocs.io/en/latest/api/#requests.delete&gt;`_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;DELETE&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HEAD"><a class="viewcode-back" href="../../rest.html#wooper.rest.HEAD">[docs]</a><span class="k">def</span> <span class="nf">HEAD</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    make a HEAD request to some URI</span>
+
+<span class="sd">    :param str uri: URI</span>
+
+<span class="sd">    rest of args is the same as in `requests.head()</span>
+<span class="sd">    &lt;https://requests.readthedocs.io/en/latest/api/#requests.head&gt;`_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;HEAD&#39;</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">json_response</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">json_dict</span> <span class="o">=</span> <span class="n">parse_json_response</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">response</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json_dict</span>
+
+
+<span class="k">def</span> <span class="nf">get_id_from_href</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">input_json</span> <span class="o">=</span> <span class="n">apply_path</span><span class="p">(</span><span class="n">json_response</span><span class="p">(</span><span class="n">context</span><span class="p">),</span> <span class="n">path</span><span class="p">)</span>
+    <span class="n">item_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">input_json</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/wooper.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <p class="caption" role="heading"><span class="caption-text">Using with Behave</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../expect.html">Expectations for Behave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rest.html">REST functions for Behave</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using with UnitTest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../test_class.html">Test class for UnitTest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unittest_example.html">Example using with Unittest</a></li>
+</ul>
+
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">wooper 0.4.4 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">wooper.rest</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2015-2024, actionless.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+  </body>
+</html>

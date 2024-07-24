@@ -49,6 +49,7 @@
 <section id="table-of-contents">
 <h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Using with Behave</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="expect.html">Expectations for Behave</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="expect.html#wooper.expect.expect_body_contains"><code class="docutils literal notranslate"><span class="pre">expect_body_contains()</span></code></a></li>
@@ -63,8 +64,57 @@
 <li class="toctree-l2"><a class="reference internal" href="expect.html#wooper.expect.expect_status_in"><code class="docutils literal notranslate"><span class="pre">expect_status_in()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST functions for Behave</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#context-variables">Context Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#rest.context.server_url"><code class="docutils literal notranslate"><span class="pre">context.server_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#rest.context.enable_ssl_verification"><code class="docutils literal notranslate"><span class="pre">context.enable_ssl_verification</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#rest.context.print_url"><code class="docutils literal notranslate"><span class="pre">context.print_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#rest.context.print_payload"><code class="docutils literal notranslate"><span class="pre">context.print_payload</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#rest.context.print_headers"><code class="docutils literal notranslate"><span class="pre">context.print_headers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#rest.context.response"><code class="docutils literal notranslate"><span class="pre">context.response</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="rest.html#rest.context.session"><code class="docutils literal notranslate"><span class="pre">context.session</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#wooper.rest.DELETE"><code class="docutils literal notranslate"><span class="pre">DELETE()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#wooper.rest.GET"><code class="docutils literal notranslate"><span class="pre">GET()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#wooper.rest.HEAD"><code class="docutils literal notranslate"><span class="pre">HEAD()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#wooper.rest.PATCH"><code class="docutils literal notranslate"><span class="pre">PATCH()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#wooper.rest.POST"><code class="docutils literal notranslate"><span class="pre">POST()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#wooper.rest.PUT"><code class="docutils literal notranslate"><span class="pre">PUT()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Using with UnitTest</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="test_class.html">Test class for UnitTest</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin"><code class="docutils literal notranslate"><span class="pre">ApiMixin</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin"><code class="docutils literal notranslate"><span class="pre">ApiMixin</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.server_url"><code class="docutils literal notranslate"><span class="pre">ApiMixin.server_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.DELETE"><code class="docutils literal notranslate"><span class="pre">ApiMixin.DELETE()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.GET"><code class="docutils literal notranslate"><span class="pre">ApiMixin.GET()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.HEAD"><code class="docutils literal notranslate"><span class="pre">ApiMixin.HEAD()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.PATCH"><code class="docutils literal notranslate"><span class="pre">ApiMixin.PATCH()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.POST"><code class="docutils literal notranslate"><span class="pre">ApiMixin.POST()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.PUT"><code class="docutils literal notranslate"><span class="pre">ApiMixin.PUT()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.enable_ssl_verification"><code class="docutils literal notranslate"><span class="pre">ApiMixin.enable_ssl_verification</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.expect_body_contains"><code class="docutils literal notranslate"><span class="pre">ApiMixin.expect_body_contains()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.expect_headers"><code class="docutils literal notranslate"><span class="pre">ApiMixin.expect_headers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.expect_headers_contain"><code class="docutils literal notranslate"><span class="pre">ApiMixin.expect_headers_contain()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.expect_json"><code class="docutils literal notranslate"><span class="pre">ApiMixin.expect_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.expect_json_contains"><code class="docutils literal notranslate"><span class="pre">ApiMixin.expect_json_contains()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.expect_json_length"><code class="docutils literal notranslate"><span class="pre">ApiMixin.expect_json_length()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.expect_json_match"><code class="docutils literal notranslate"><span class="pre">ApiMixin.expect_json_match()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.expect_json_not_contains"><code class="docutils literal notranslate"><span class="pre">ApiMixin.expect_json_not_contains()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.expect_status"><code class="docutils literal notranslate"><span class="pre">ApiMixin.expect_status()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.expect_status_in"><code class="docutils literal notranslate"><span class="pre">ApiMixin.expect_status_in()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.json_response"><code class="docutils literal notranslate"><span class="pre">ApiMixin.json_response</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.print_headers"><code class="docutils literal notranslate"><span class="pre">ApiMixin.print_headers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.print_payload"><code class="docutils literal notranslate"><span class="pre">ApiMixin.print_payload</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="test_class.html#wooper.test_class.ApiMixin.print_url"><code class="docutils literal notranslate"><span class="pre">ApiMixin.print_url</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="unittest_example.html">Example using with Unittest</a></li>
@@ -92,8 +142,13 @@
             </a></p>
   <div>
     <h3><a href="#">Table of Contents</a></h3>
-    <ul>
+    <p class="caption" role="heading"><span class="caption-text">Using with Behave</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="expect.html">Expectations for Behave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">REST functions for Behave</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using with UnitTest</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="test_class.html">Test class for UnitTest</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unittest_example.html">Example using with Unittest</a></li>
 </ul>

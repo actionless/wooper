@@ -4,9 +4,16 @@ Table of Contents
 =================
 
 .. toctree::
-   :maxdepth: 2
+   :caption: Using with Behave
+   :maxdepth: 3
 
    expect.rst
+   rest.rst
+
+.. toctree::
+   :caption: Using with UnitTest
+   :maxdepth: 3
+
    test_class.rst
    unittest_example.rst
 

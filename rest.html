@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>REST functions for Behave &#8212; wooper 0.4.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=89b800e6" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b209ebb4"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Test class for UnitTest" href="test_class.html" />
+    <link rel="prev" title="Expectations for Behave" href="expect.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="test_class.html" title="Test class for UnitTest"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="expect.html" title="Expectations for Behave"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">wooper 0.4.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">REST functions for Behave</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-wooper.rest">
+<span id="rest-functions-for-behave"></span><h1>REST functions for Behave<a class="headerlink" href="#module-wooper.rest" title="Permalink to this heading">¶</a></h1>
+<span class="target" id="module-rest"></span><p>REST functions are receiving behave <cite>context</cite> object
+as first argument.
+These helpers make testing API response bodies and headers easy with minimal
+time and effort.</p>
+<section id="context-variables">
+<h2>Context Variables<a class="headerlink" href="#context-variables" title="Permalink to this heading">¶</a></h2>
+<p>The following context variables are used:</p>
+<p class="rubric">To be set by user:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rest.context.server_url">
+<span class="sig-prename descclassname"><span class="pre">context.</span></span><span class="sig-name descname"><span class="pre">server_url</span></span><a class="headerlink" href="#rest.context.server_url" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p>server base url</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rest.context.enable_ssl_verification">
+<span class="sig-prename descclassname"><span class="pre">context.</span></span><span class="sig-name descname"><span class="pre">enable_ssl_verification</span></span><a class="headerlink" href="#rest.context.enable_ssl_verification" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool = False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rest.context.print_url">
+<span class="sig-prename descclassname"><span class="pre">context.</span></span><span class="sig-name descname"><span class="pre">print_url</span></span><a class="headerlink" href="#rest.context.print_url" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rest.context.print_payload">
+<span class="sig-prename descclassname"><span class="pre">context.</span></span><span class="sig-name descname"><span class="pre">print_payload</span></span><a class="headerlink" href="#rest.context.print_payload" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rest.context.print_headers">
+<span class="sig-prename descclassname"><span class="pre">context.</span></span><span class="sig-name descname"><span class="pre">print_headers</span></span><a class="headerlink" href="#rest.context.print_headers" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Will be set by lib:</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rest.context.response">
+<span class="sig-prename descclassname"><span class="pre">context.</span></span><span class="sig-name descname"><span class="pre">response</span></span><a class="headerlink" href="#rest.context.response" title="Permalink to this definition">¶</a></dt>
+<dd><p>request <a class="reference external" href="https://requests.readthedocs.io/en/latest/api/#requests.Response">response</a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rest.context.session">
+<span class="sig-prename descclassname"><span class="pre">context.</span></span><span class="sig-name descname"><span class="pre">session</span></span><a class="headerlink" href="#rest.context.session" title="Permalink to this definition">¶</a></dt>
+<dd><p>request <a class="reference external" href="https://requests.readthedocs.io/en/latest/api/#requests.Session">session</a></p>
+</dd></dl>
+
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="wooper.rest.DELETE">
+<span class="sig-prename descclassname"><span class="pre">wooper.rest.</span></span><span class="sig-name descname"><span class="pre">DELETE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wooper/rest.html#DELETE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wooper.rest.DELETE" title="Permalink to this definition">¶</a></dt>
+<dd><p>make a DELETE request to some URI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – URI</p>
+</dd>
+</dl>
+<p>rest of args is the same as in <a class="reference external" href="https://requests.readthedocs.io/en/latest/api/#requests.delete">requests.delete()</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wooper.rest.GET">
+<span class="sig-prename descclassname"><span class="pre">wooper.rest.</span></span><span class="sig-name descname"><span class="pre">GET</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wooper/rest.html#GET"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wooper.rest.GET" title="Permalink to this definition">¶</a></dt>
+<dd><p>make a GET request to some URI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – URI</p>
+</dd>
+</dl>
+<p>rest of args is the same as in <a class="reference external" href="https://requests.readthedocs.io/en/latest/api/#requests.get">requests.get()</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wooper.rest.HEAD">
+<span class="sig-prename descclassname"><span class="pre">wooper.rest.</span></span><span class="sig-name descname"><span class="pre">HEAD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wooper/rest.html#HEAD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wooper.rest.HEAD" title="Permalink to this definition">¶</a></dt>
+<dd><p>make a HEAD request to some URI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – URI</p>
+</dd>
+</dl>
+<p>rest of args is the same as in <a class="reference external" href="https://requests.readthedocs.io/en/latest/api/#requests.head">requests.head()</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wooper.rest.PATCH">
+<span class="sig-prename descclassname"><span class="pre">wooper.rest.</span></span><span class="sig-name descname"><span class="pre">PATCH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wooper/rest.html#PATCH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wooper.rest.PATCH" title="Permalink to this definition">¶</a></dt>
+<dd><p>make a PATCH request to some URI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<em>str</em>) – URI</p></li>
+<li><p><strong>data</strong> (<em>str</em><em>, </em><em>list</em><em>, </em><em>dict</em>) – request payload</p></li>
+</ul>
+</dd>
+</dl>
+<p>rest of args is the same as in <a class="reference external" href="https://requests.readthedocs.io/en/latest/api/#requests.patch">requests.patch()</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wooper.rest.POST">
+<span class="sig-prename descclassname"><span class="pre">wooper.rest.</span></span><span class="sig-name descname"><span class="pre">POST</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wooper/rest.html#POST"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wooper.rest.POST" title="Permalink to this definition">¶</a></dt>
+<dd><p>make a POST request to some URI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<em>str</em>) – URI</p></li>
+<li><p><strong>data</strong> (<em>str</em><em>, </em><em>list</em><em>, </em><em>dict</em>) – request payload</p></li>
+</ul>
+</dd>
+</dl>
+<p>rest of args is the same as in <a class="reference external" href="https://requests.readthedocs.io/en/latest/api/#requests.post">requests.post()</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wooper.rest.PUT">
+<span class="sig-prename descclassname"><span class="pre">wooper.rest.</span></span><span class="sig-name descname"><span class="pre">PUT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wooper/rest.html#PUT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wooper.rest.PUT" title="Permalink to this definition">¶</a></dt>
+<dd><p>make a PUT request to some URI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<em>str</em>) – URI</p></li>
+<li><p><strong>data</strong> (<em>str</em><em>, </em><em>list</em><em>, </em><em>dict</em>) – request payload</p></li>
+</ul>
+</dd>
+</dl>
+<p>rest of args is the same as in <a class="reference external" href="https://requests.readthedocs.io/en/latest/api/#requests.put">requests.put()</a></p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/wooper.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <p class="caption" role="heading"><span class="caption-text">Using with Behave</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="expect.html">Expectations for Behave</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">REST functions for Behave</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#context-variables">Context Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rest.context.server_url"><code class="docutils literal notranslate"><span class="pre">context.server_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rest.context.enable_ssl_verification"><code class="docutils literal notranslate"><span class="pre">context.enable_ssl_verification</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rest.context.print_url"><code class="docutils literal notranslate"><span class="pre">context.print_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rest.context.print_payload"><code class="docutils literal notranslate"><span class="pre">context.print_payload</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rest.context.print_headers"><code class="docutils literal notranslate"><span class="pre">context.print_headers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rest.context.response"><code class="docutils literal notranslate"><span class="pre">context.response</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rest.context.session"><code class="docutils literal notranslate"><span class="pre">context.session</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wooper.rest.DELETE"><code class="docutils literal notranslate"><span class="pre">DELETE()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wooper.rest.GET"><code class="docutils literal notranslate"><span class="pre">GET()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wooper.rest.HEAD"><code class="docutils literal notranslate"><span class="pre">HEAD()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wooper.rest.PATCH"><code class="docutils literal notranslate"><span class="pre">PATCH()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wooper.rest.POST"><code class="docutils literal notranslate"><span class="pre">POST()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wooper.rest.PUT"><code class="docutils literal notranslate"><span class="pre">PUT()</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using with UnitTest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="test_class.html">Test class for UnitTest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unittest_example.html">Example using with Unittest</a></li>
+</ul>
+
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="test_class.html" title="Test class for UnitTest"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="expect.html" title="Expectations for Behave"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">wooper 0.4.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">REST functions for Behave</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2015-2024, actionless.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+    </div>
+  </body>
+</html>
