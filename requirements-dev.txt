@@ -3,3 +3,4 @@ coverage
 Sphinx
 sphinxcontrib-fulltoc
 sphinx-mdinclude
+furo
