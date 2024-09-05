@@ -3,4 +3,5 @@ coverage
 Sphinx
 sphinxcontrib-fulltoc
 sphinx-mdinclude
-furo
+# furo
+furo @ git+https://github.com/actionless/furo.git@99d79db89dbfb91b0735774d344d629c06685631#egg=furo
